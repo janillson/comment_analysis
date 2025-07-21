@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_07_20_235939) do
+ActiveRecord::Schema[7.0].define(version: 2025_07_21_000540) do
   create_table "comments", force: :cascade do |t|
     t.integer "post_id", null: false
     t.text "original_body", null: false
@@ -23,6 +23,17 @@ ActiveRecord::Schema[7.0].define(version: 2025_07_20_235939) do
     t.index ["external_id"], name: "index_comments_on_external_id", unique: true
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["status"], name: "index_comments_on_status"
+  end
+
+  create_table "group_metrics", force: :cascade do |t|
+    t.integer "total_users", default: 0
+    t.integer "total_comments", default: 0
+    t.decimal "overall_approval_rate", precision: 5, scale: 2, default: "0.0"
+    t.decimal "average_comments_per_user", precision: 8, scale: 2, default: "0.0"
+    t.decimal "median_comments_per_user", precision: 8, scale: 2, default: "0.0"
+    t.decimal "std_dev_comments_per_user", precision: 8, scale: 2, default: "0.0"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "keywords", force: :cascade do |t|
