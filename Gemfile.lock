@@ -85,6 +85,7 @@ GEM
     erubi (1.13.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    google-translate-free (1.0.2)
     httparty (0.23.1)
       csv
       mini_mime (>= 1.0.0)
@@ -225,6 +226,7 @@ DEPENDENCIES
   bigdecimal (~> 3.2)
   bootsnap
   debug
+  google-translate-free (~> 1.0)
   httparty (~> 0.23.1)
   mutex_m (~> 0.3.0)
   pg (~> 1.1)
