@@ -8,6 +8,6 @@ class Keyword < ApplicationRecord
   private
 
   def trigger_reprocessing
-    ReprocessAllUsersJob.perform_later
+    ReprocessAllUsersJob.perform_async
   end
 end

@@ -1,5 +1,7 @@
-class CalculateGroupMetricsJob < ApplicationJob
-  queue_as :metrics
+class CalculateGroupMetricsJob
+  include Sidekiq::Job
+
+  sidekiq_options queue: :metrics
 
   def perform
     Metric::GroupCalculationService.new.call

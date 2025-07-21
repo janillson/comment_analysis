@@ -1,7 +1,10 @@
-class ProcessCommentJob < ApplicationJob
-  queue_as :default
+class ProcessCommentJob
+  include Sidekiq::Job
 
-  def perform(comment_id)
+  sidekiq_options queue: :default
+
+  def perform(args)
+    comment_id = args["comment_id"]
     comment = Comment.find(comment_id)
     CommentProcessingService.new(comment).call
   end

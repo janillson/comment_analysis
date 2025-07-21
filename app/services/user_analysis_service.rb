@@ -23,14 +23,14 @@ class UserAnalysisService
   def process_comments_async
     # Enfileira processamento de comentários
     @user.comments.created.find_each do |comment|
-      ProcessCommentJob.perform_later(comment.id)
+      ProcessCommentJob.perform_async({ "comment_id" => comment.id})
     end
   end
 
   def calculate_metrics
     # Calcula métricas após processamento
-    CalculateUserMetricsJob.perform_later(@user.id)
-    CalculateGroupMetricsJob.perform_later
+    CalculateUserMetricsJob.perform_async({"user_id" => @user.id})
+    CalculateGroupMetricsJob.perform_async
   end
 
   def build_response
