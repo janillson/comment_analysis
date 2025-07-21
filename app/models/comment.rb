@@ -2,7 +2,7 @@ class Comment < ApplicationRecord
   include AASM
 
   belongs_to :post
-  has_one :user, through: :post
+  belongs_to :user
 
   validates :body, :original_body, presence: true
   validates :external_id, presence: true, uniqueness: true
@@ -22,7 +22,7 @@ class Comment < ApplicationRecord
     end
 
     event :reject do
-      transitions from: :processing, to: :reject
+      transitions from: :processing, to: :rejected
     end
   end
 end
