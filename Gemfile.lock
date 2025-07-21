@@ -139,6 +139,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.8-x86_64-linux-musl)
       racc (~> 1.4)
+    pg (1.5.9)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -195,11 +196,6 @@ GEM
       logger
       rack (>= 2.2.4)
       redis-client (>= 0.22.2)
-    sqlite3 (1.7.3-aarch64-linux)
-    sqlite3 (1.7.3-arm-linux)
-    sqlite3 (1.7.3-arm64-darwin)
-    sqlite3 (1.7.3-x86_64-darwin)
-    sqlite3 (1.7.3-x86_64-linux)
     stringio (3.1.7)
     thor (1.4.0)
     timeout (0.4.3)
@@ -231,11 +227,11 @@ DEPENDENCIES
   debug
   httparty (~> 0.23.1)
   mutex_m (~> 0.3.0)
+  pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.8, >= 7.0.8.4)
   redis (~> 5.4)
   sidekiq (~> 7.3)
-  sqlite3 (~> 1.4)
   tzinfo-data
 
 RUBY VERSION
