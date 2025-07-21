@@ -20,6 +20,8 @@ module Metric
 
       group_metric = GroupMetric.first_or_initialize
       group_metric.update!(metrics)
+
+      users.each { |user| Rails.cache.write("user_analysis_#{user.username}", UserResponseBuilderService.new(user).call) }
     end
 
     private

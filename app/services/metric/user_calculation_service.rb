@@ -24,7 +24,7 @@ module Metric
       @user.build_user_metric(metrics) if @user.user_metric.nil?
       @user.user_metric.update(metrics)
 
-      UserResponseBuilderService.new(@user).call
+      Rails.cache.write("user_analysis_#{@user.username}", UserResponseBuilderService.new(@user).call)
     end
 
     private

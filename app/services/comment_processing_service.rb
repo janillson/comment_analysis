@@ -11,7 +11,7 @@ class CommentProcessingService
     translate_comment
     classify_comment
 
-    @comment.save!
+    @comment.save
   end
 
   private
