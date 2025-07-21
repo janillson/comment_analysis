@@ -54,9 +54,10 @@ class JsonPlaceholderImportService
 
       comments_data.each do |comment_data|
         Comment.find_or_create_by(external_id: comment_data['id']) do |comment|
+          comment.user = user
           comment.post = post
           comment.original_body = comment_data['body']
-          comment.body = comment_data['body'] # TODO: Traduzir
+          comment.body = comment_data['body']
         end
       end
     end
